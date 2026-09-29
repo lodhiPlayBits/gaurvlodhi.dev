@@ -67,11 +67,11 @@ describe("Contact", () => {
     expect(container.querySelector("#contact")).toBeTruthy();
   });
 
-  it("renders a mailto link with the given email", () => {
+  it("renders a gmail compose link with the given email", () => {
     render(<Contact socials={mockSocials} email={email} />);
     const link = screen.getByRole("link", { name: new RegExp(email) });
     expect(link).toBeTruthy();
-    expect(link.getAttribute("href")).toBe(`mailto:${email}`);
+    expect(link.getAttribute("href")).toBe(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`);
   });
 
   it("renders social links with accessible labels", () => {

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, Send, Mail, Globe } from "lucide-react";
+import { Github, Linkedin, Instagram, Send, Mail, Globe, MessageCircle } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Magnetic } from "@/components/motion/Magnetic";
@@ -50,27 +50,49 @@ export function Contact({ socials, email }: { socials: SocialRow[]; email: strin
         </Reveal>
 
         <Reveal delay={0.1}>
-          <Magnetic>
-            <Button
-              href={`mailto:${email}`}
-              variant="primary"
-              size="lg"
-              leftIcon={<Mail className="size-4" aria-hidden />}
-            >
-              {email}
-            </Button>
-          </Magnetic>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Magnetic>
+              <Button
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="lg"
+                leftIcon={<Mail className="size-4" aria-hidden />}
+              >
+                {email}
+              </Button>
+            </Magnetic>
+
+            <Magnetic>
+              <Button
+                href="https://wa.me/918595007855"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="secondary"
+                size="lg"
+                leftIcon={<MessageCircle className="size-4" aria-hidden />}
+              >
+                +91-8595007855
+              </Button>
+            </Magnetic>
+          </div>
         </Reveal>
 
         <Reveal delay={0.15}>
           <ul className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {sorted.map((s) => {
               const Icon = platformIcon(s.platform);
-              const isExternal = s.url.startsWith("http");
+              const isEmail = s.platform.toLowerCase() === "email";
+              const rawUrl = isEmail 
+                ? `https://mail.google.com/mail/?view=cm&fs=1&to=${s.url.replace("mailto:", "")}` 
+                : s.url;
+              const isExternal = rawUrl.startsWith("http");
+              
               return (
                 <li key={s.platform}>
                   <a
-                    href={s.url}
+                    href={rawUrl}
                     aria-label={`${s.platform}: ${s.username}`}
                     {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="border-border text-muted hover:text-foreground hover:border-foreground/30 hover:bg-surface-2 focus-visible:ring-ring grid size-11 place-items-center rounded-full border transition-colors focus-visible:ring-2 focus-visible:outline-none motion-safe:transition-transform motion-safe:hover:scale-105"
