@@ -8,7 +8,13 @@ export const dynamic = "force-dynamic";
 
 const fields: AdminField[] = [
   { name: "platform", label: "Platform", type: "text", placeholder: "GitHub", required: true },
-  { name: "username", label: "Username", type: "text", placeholder: "lodhiPlayBits", hint: "Optional" },
+  {
+    name: "username",
+    label: "Username",
+    type: "text",
+    placeholder: "lodhiPlayBits",
+    hint: "Optional",
+  },
   {
     name: "url",
     label: "URL",

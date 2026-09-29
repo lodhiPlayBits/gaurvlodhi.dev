@@ -66,7 +66,12 @@ export const serviceInsertSchema = z.object({
 
 export const socialLinkInsertSchema = z.object({
   platform: z.string().min(1),
-  url: z.string().url().refine((v) => v.startsWith("http://") || v.startsWith("https://") || v.startsWith("mailto:"), { message: "Must be a valid http, https, or mailto URL" }),
+  url: z
+    .string()
+    .url()
+    .refine((v) => v.startsWith("http://") || v.startsWith("https://") || v.startsWith("mailto:"), {
+      message: "Must be a valid http, https, or mailto URL",
+    }),
   username: z.string().nullable().optional(),
   order: z.number().int().nonnegative().default(0),
 });

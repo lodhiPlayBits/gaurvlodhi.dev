@@ -174,75 +174,75 @@ const skillGroups: {
   category: string;
   items: { name: string; level: string; iconPath: string }[];
 }[] = [
-    {
-      category: "Programming Languages",
-      items: [
-        { name: "JavaScript", level: "Expert", iconPath: "/skills/javascript.svg" },
-        { name: "TypeScript", level: "Intermediate", iconPath: "/skills/typescript.svg" },
-        { name: "Dart", level: "Expert", iconPath: "/skills/dart.svg" },
-        { name: "Ruby", level: "Intermediate", iconPath: "/skills/ruby.png" },
-      ],
-    },
-    {
-      category: "Frontend Development",
-      items: [
-        { name: "Next.js", level: "Expert", iconPath: "/skills/nextjs.png" },
-        { name: "React.js", level: "Expert", iconPath: "/skills/react.svg" },
-        { name: "HTML", level: "Expert", iconPath: "/skills/html.svg" },
-        { name: "CSS", level: "Intermediate", iconPath: "/skills/css.svg" },
-        { name: "SASS", level: "Intermediate", iconPath: "/skills/sass.svg" },
-        { name: "Redux Toolkit", level: "Expert", iconPath: "/skills/redux.svg" },
-      ],
-    },
-    {
-      category: "Backend Development",
-      items: [
-        { name: "Node.js", level: "Expert", iconPath: "/skills/nodejs.svg" },
-        { name: "Express.js", level: "Expert", iconPath: "/skills/express.svg" },
-        { name: "Ruby on Rails", level: "Intermediate", iconPath: "/skills/rails.png" },
-        { name: "Socket.io", level: "Intermediate", iconPath: "/skills/socket-io.png" },
-      ],
-    },
-    {
-      category: "Mobile App Development",
-      items: [
-        { name: "Flutter", level: "Expert", iconPath: "/skills/flutter.svg" },
-        { name: "GetX", level: "Expert", iconPath: "/skills/getx.png" },
-      ],
-    },
-    {
-      category: "Database Management",
-      items: [
-        { name: "MongoDB", level: "Intermediate", iconPath: "/skills/mongodb.svg" },
-        { name: "PostgreSQL", level: "Intermediate", iconPath: "/skills/postgresql.svg" },
-        { name: "MySQL", level: "Beginner", iconPath: "/skills/mysql.svg" },
-      ],
-    },
-    {
-      category: "DevOps/VCS",
-      items: [
-        { name: "Docker", level: "Beginner", iconPath: "/skills/docker.png" },
-        { name: "AWS", level: "Intermediate", iconPath: "/skills/aws.svg" },
-        { name: "Git", level: "Expert", iconPath: "/skills/git.svg" },
-        { name: "GitHub", level: "Expert", iconPath: "/skills/github.svg" },
-      ],
-    },
-    {
-      category: "Miscellaneous",
-      items: [
-        { name: "Firebase", level: "Intermediate", iconPath: "/skills/firebase.svg" },
-        { name: "Ubuntu", level: "Intermediate", iconPath: "/skills/ubuntu.png" },
-      ],
-    },
-    {
-      category: "Nontechnical Skills",
-      items: [
-        { name: "Problem Solving", level: "Expert", iconPath: "/images/logical-thinking.png" },
-        { name: "Collaboration", level: "Expert", iconPath: "/images/collaboration.png" },
-        { name: "Analytical Skills", level: "Expert", iconPath: "/images/analytical-skills.png" },
-      ],
-    },
-  ];
+  {
+    category: "Programming Languages",
+    items: [
+      { name: "JavaScript", level: "Expert", iconPath: "/skills/javascript.svg" },
+      { name: "TypeScript", level: "Intermediate", iconPath: "/skills/typescript.svg" },
+      { name: "Dart", level: "Expert", iconPath: "/skills/dart.svg" },
+      { name: "Ruby", level: "Intermediate", iconPath: "/skills/ruby.png" },
+    ],
+  },
+  {
+    category: "Frontend Development",
+    items: [
+      { name: "Next.js", level: "Expert", iconPath: "/skills/nextjs.png" },
+      { name: "React.js", level: "Expert", iconPath: "/skills/react.svg" },
+      { name: "HTML", level: "Expert", iconPath: "/skills/html.svg" },
+      { name: "CSS", level: "Intermediate", iconPath: "/skills/css.svg" },
+      { name: "SASS", level: "Intermediate", iconPath: "/skills/sass.svg" },
+      { name: "Redux Toolkit", level: "Expert", iconPath: "/skills/redux.svg" },
+    ],
+  },
+  {
+    category: "Backend Development",
+    items: [
+      { name: "Node.js", level: "Expert", iconPath: "/skills/nodejs.svg" },
+      { name: "Express.js", level: "Expert", iconPath: "/skills/express.svg" },
+      { name: "Ruby on Rails", level: "Intermediate", iconPath: "/skills/rails.png" },
+      { name: "Socket.io", level: "Intermediate", iconPath: "/skills/socket-io.png" },
+    ],
+  },
+  {
+    category: "Mobile App Development",
+    items: [
+      { name: "Flutter", level: "Expert", iconPath: "/skills/flutter.svg" },
+      { name: "GetX", level: "Expert", iconPath: "/skills/getx.png" },
+    ],
+  },
+  {
+    category: "Database Management",
+    items: [
+      { name: "MongoDB", level: "Intermediate", iconPath: "/skills/mongodb.svg" },
+      { name: "PostgreSQL", level: "Intermediate", iconPath: "/skills/postgresql.svg" },
+      { name: "MySQL", level: "Beginner", iconPath: "/skills/mysql.svg" },
+    ],
+  },
+  {
+    category: "DevOps/VCS",
+    items: [
+      { name: "Docker", level: "Beginner", iconPath: "/skills/docker.png" },
+      { name: "AWS", level: "Intermediate", iconPath: "/skills/aws.svg" },
+      { name: "Git", level: "Expert", iconPath: "/skills/git.svg" },
+      { name: "GitHub", level: "Expert", iconPath: "/skills/github.svg" },
+    ],
+  },
+  {
+    category: "Miscellaneous",
+    items: [
+      { name: "Firebase", level: "Intermediate", iconPath: "/skills/firebase.svg" },
+      { name: "Ubuntu", level: "Intermediate", iconPath: "/skills/ubuntu.png" },
+    ],
+  },
+  {
+    category: "Nontechnical Skills",
+    items: [
+      { name: "Problem Solving", level: "Expert", iconPath: "/images/logical-thinking.png" },
+      { name: "Collaboration", level: "Expert", iconPath: "/images/collaboration.png" },
+      { name: "Analytical Skills", level: "Expert", iconPath: "/images/analytical-skills.png" },
+    ],
+  },
+];
 const skillRows = skillGroups.flatMap((g, gi) =>
   g.items.map((it, ii) => ({
     name: it.name,

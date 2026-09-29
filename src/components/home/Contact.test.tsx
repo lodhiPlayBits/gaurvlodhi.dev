@@ -26,14 +26,24 @@ vi.mock("@/components/motion/Reveal", () => ({
 beforeEach(() => installMatchMedia());
 
 const mockSocials: SocialRow[] = [
-  { platform: "github", url: "https://github.com/lodhiPlayBits", username: "lodhiPlayBits", order: 1 },
+  {
+    platform: "github",
+    url: "https://github.com/lodhiPlayBits",
+    username: "lodhiPlayBits",
+    order: 1,
+  },
   {
     platform: "linkedin",
     url: "https://linkedin.com/in/lodhiPlayBits",
     username: "lodhiPlayBits",
     order: 2,
   },
-  { platform: "twitter", url: "https://twitter.com/lodhiPlayBits", username: "lodhiPlayBits", order: 3 },
+  {
+    platform: "twitter",
+    url: "https://twitter.com/lodhiPlayBits",
+    username: "lodhiPlayBits",
+    order: 3,
+  },
 ];
 
 describe("platformIcon", () => {
@@ -92,7 +102,12 @@ describe("Contact", () => {
         username: "lodhiPlayBits",
         order: 3,
       },
-      { platform: "github", url: "https://github.com/lodhiPlayBits", username: "lodhiPlayBits", order: 1 },
+      {
+        platform: "github",
+        url: "https://github.com/lodhiPlayBits",
+        username: "lodhiPlayBits",
+        order: 1,
+      },
       {
         platform: "linkedin",
         url: "https://linkedin.com/in/lodhiPlayBits",
