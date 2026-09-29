@@ -1,0 +1,100 @@
+PORTFOLIO SETUP CHECKLIST
+=========================
+
+Last updated: [Add date when you start]
+
+PREREQUISITES
+-------------
+[ ] Bun installed (version >= 1.1)
+    Command: bun --version
+    Install: https://bun.sh/
+
+[ ] PostgreSQL available (local or Neon cloud)
+    Local: https://www.postgresql.org/download/
+    Cloud: https://neon.tech/ (free tier)
+
+[ ] GitHub account
+    For OAuth authentication
+
+CONFIGURATION
+-------------
+[ ] Dependencies installed
+    Command: bun install
+
+[ ] .env.local file configured with:
+    [ ] DATABASE_URL (PostgreSQL connection string)
+    [ ] AUTH_SECRET (generated with: openssl rand -base64 32)
+    [ ] AUTH_GITHUB_ID (from GitHub OAuth App)
+    [ ] AUTH_GITHUB_SECRET (from GitHub OAuth App)
+    [ ] ADMIN_GITHUB_LOGIN (your GitHub username)
+    [ ] NEXT_PUBLIC_SITE_URL (http://localhost:4000)
+    [ ] GITHUB_TOKEN (optional but recommended)
+
+[ ] GitHub OAuth App created
+    Settings → Developer settings → OAuth Apps
+    Homepage URL: http://localhost:4000
+    Callback URL: http://localhost:4000/api/auth/callback/github
+
+DATABASE SETUP
+--------------
+[ ] Database created (if using local PostgreSQL)
+    Command: createdb portfolio
+
+[ ] Migrations applied
+    Command: bunx drizzle-kit migrate
+
+[ ] Database seeded with sample data
+    Command: bun run db:seed
+
+VERIFICATION
+------------
+[ ] Dev server starts successfully
+    Command: bun run dev
+    URL: http://localhost:4000
+
+[ ] Homepage loads with content
+    Should show profile, projects, skills, etc.
+
+[ ] Can access admin panel
+    URL: http://localhost:4000/admin
+
+[ ] GitHub OAuth login works
+    Should redirect and authenticate
+
+[ ] Admin dashboard visible after login
+    Should show CRUD tabs
+
+OPTIONAL ENHANCEMENTS
+--------------------
+[ ] Git hooks enabled
+    Command: git config core.hooksPath .githooks
+
+[ ] Drizzle Studio tested
+    Command: bun run db:studio
+    URL: http://localhost:4983
+
+[ ] Tests run successfully
+    Command: bun run test
+
+[ ] Linting passes
+    Command: bun run lint
+
+[ ] Type checking passes
+    Command: bun run typecheck
+
+[ ] Production build tested
+    Commands: bun run build && bun run start
+
+CUSTOMIZATION
+-------------
+[ ] Updated profile information in admin panel
+[ ] Added your GitHub projects
+[ ] Updated skills and experiences
+[ ] Changed social links
+[ ] Uploaded custom avatar/images
+[ ] Customized theme colors (optional)
+
+TROUBLESHOOTING NOTES
+--------------------
+(Add any issues you encounter and solutions)
+

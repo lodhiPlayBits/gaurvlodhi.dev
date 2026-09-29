@@ -1,0 +1,71 @@
+name: Feature Request
+description: Suggest an improvement or new feature for portfolio-nextjs v2
+title: "[Feature Request]: "
+labels: ["enhancement"]
+assignees:
+  - lodhiPlayBits
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature!
+        Before submitting, check [existing issues](https://github.com/lodhiPlayBits/portfolio-nextjs/issues) and [discussions](https://github.com/lodhiPlayBits/portfolio-nextjs/discussions) to see if it has already been proposed.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Scope / area
+      description: Which part of the project does this feature relate to?
+      multiple: false
+      options:
+        - Homepage / UI / Design
+        - Projects section
+        - Experience / Skills
+        - Testimonials
+        - Theming / brand palette
+        - Admin panel
+        - SEO / Analytics
+        - CI / Developer tooling
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem does this feature solve? Why is it needed?
+      placeholder: "As a visitor / admin, I find it hard to ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the feature you would like to see.
+      placeholder: "I would like ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative approaches you have thought about?
+      placeholder: "Instead, one could ..."
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any other information, mockups, or references that would help.
+
+  - type: checkboxes
+    id: conduct
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue you agree to follow our [Code of Conduct](https://github.com/lodhiPlayBits/portfolio-nextjs/blob/master/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#100d1c"/>
+      <stop offset="1" stop-color="#090811"/>
+    </linearGradient>
+
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7B2FF7"/>
+      <stop offset="0.55" stop-color="#6D3DF5"/>
+      <stop offset="1" stop-color="#9B5CFF"/>
+    </linearGradient>
+
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.43
+                0 0 0 0 0.16
+                0 0 0 0 0.98
+                0 0 0 0.8 0"/>
+    </filter>
+
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded app-icon background -->
+  <rect x="4" y="4" width="504" height="504" rx="92"
+        fill="url(#bg)" stroke="#52209A" stroke-width="4"/>
+
+  <!-- Subtle GL glow -->
+  <g fill="none" stroke="#7135F5" stroke-width="34"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity="0.55" filter="url(#glow)">
+    <!-- G -->
+    <path d="M205 174
+             C174 145 126 150 105 187
+             C84 224 94 281 132 303
+             C169 325 213 306 222 269
+             L222 245 L179 245"/>
+    <!-- L -->
+    <path d="M247 168 L247 302 L329 302"/>
+  </g>
+
+  <!-- Main GL mark -->
+  <g fill="none" stroke="url(#purple)" stroke-width="28"
+     stroke-linecap="round" stroke-linejoin="round">
+    <!-- G -->
+    <path d="M205 174
+             C174 145 126 150 105 187
+             C84 224 94 281 132 303
+             C169 325 213 306 222 269
+             L222 245 L179 245"/>
+    <!-- L -->
+    <path d="M247 168 L247 302 L329 302"/>
+  </g>
+
+  <!-- Highlight/orb -->
+  <circle cx="304" cy="137" r="29" fill="#8A43FF" opacity="0.45" filter="url(#softGlow)"/>
+  <circle cx="304" cy="137" r="18" fill="#A968FF"/>
+  <circle cx="298" cy="131" r="7" fill="#D9B8FF" opacity="0.9"/>
+</svg>
