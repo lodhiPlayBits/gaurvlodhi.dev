@@ -94,6 +94,7 @@ export default async function OpengraphImage() {
         </div>
         <div
           style={{
+            display: "flex",
             marginLeft: 8,
             fontSize: 28,
             color: BRAND.bright,
