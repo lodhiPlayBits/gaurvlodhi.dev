@@ -100,7 +100,9 @@ export default async function OpengraphImage() {
             fontWeight: 700,
           }}
         >
-          ✦
+          <svg width="28" height="28" viewBox="0 0 24 24" fill={BRAND.bright}>
+            <path d="M12 0C12 6.6 17.4 12 24 12C17.4 12 12 17.4 12 24C12 17.4 6.6 12 0 12C6.6 12 12 6.6 12 0Z" />
+          </svg>
         </div>
       </div>
 
