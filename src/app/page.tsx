@@ -81,7 +81,7 @@ export default async function Home() {
       />
 
       <Hero
-        profile={{ name: profile.name, roles: profile.roles }}
+        profile={{ name: profile.name, roles: profile.roles, resumeUrl: profile.resumeUrl }}
         heroTagline={profile.heroTagline}
       />
 

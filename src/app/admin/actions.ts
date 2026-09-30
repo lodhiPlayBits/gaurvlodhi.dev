@@ -85,6 +85,17 @@ export async function setProfileAvatar(url: string | null): Promise<void> {
   revalidatePortfolio();
 }
 
+export async function setProfileResume(url: string | null): Promise<void> {
+  await requireAdmin();
+  const [existing] = await db.select({ id: profile.id }).from(profile).limit(1);
+  if (!existing) throw new Error("No profile row found.");
+  await db
+    .update(profile)
+    .set({ resumeUrl: url, updatedAt: new Date() })
+    .where(eq(profile.id, existing.id));
+  revalidatePortfolio();
+}
+
 // Save the homepage section-visibility map (dashboard Save button). Merges the
 // submitted keys into the existing map so any section not in the form keeps its
 // state.

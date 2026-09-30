@@ -22,6 +22,7 @@ import {
   Menu,
   X,
   LogOut,
+  FileText,
 } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { BrandInitialsAvatar } from "@/components/ui/avatar";
@@ -30,6 +31,7 @@ import { cn } from "@/utils/cn";
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/profile", label: "Profile", icon: User },
+  { href: "/admin/resume", label: "Resume", icon: FileText },
   { href: "/admin/projects", label: "Projects", icon: FolderGit2 },
   { href: "/admin/experiences", label: "Experiences", icon: Briefcase },
   { href: "/admin/skills", label: "Skills", icon: Wrench },

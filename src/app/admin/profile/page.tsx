@@ -20,8 +20,8 @@ export default async function ProfileEditor() {
       .split(/[\n,]/)
       .map((r) => r.trim())
       .filter(Boolean);
-    // avatarUrl is deliberately absent: AvatarField owns that column and writes it on upload.
-    // Zod drops the absent optional, so Drizzle leaves the column alone rather than nulling it.
+    // avatarUrl and resumeUrl are deliberately absent: their fields commit on upload.
+    // Zod drops the absent optionals, so Drizzle leaves the columns alone rather than nulling them.
     await updateProfile({
       name: String(formData.get("name")),
       bio: String(formData.get("bio")),
@@ -29,7 +29,6 @@ export default async function ProfileEditor() {
       roles,
       // Visibility is managed on the dashboard; preserve it unchanged on save.
       sectionVisibility: row?.sectionVisibility ?? {},
-      resumeUrl: (formData.get("resumeUrl") as string) || null,
       heroTagline: (formData.get("heroTagline") as string) || null,
     });
   }
@@ -60,9 +59,6 @@ export default async function ProfileEditor() {
                 "Software Development Engineer\nFull Stack Developer\nOpen Source Contributor"
               }
             />
-          </Field>
-          <Field label="Resume URL" hint="Full https URL to your resume/CV.">
-            <Input name="resumeUrl" defaultValue={row?.resumeUrl ?? ""} placeholder="https://…" />
           </Field>
           <Field
             label="Hero tagline"

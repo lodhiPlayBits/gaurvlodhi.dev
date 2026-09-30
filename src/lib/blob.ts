@@ -13,16 +13,18 @@ export const BLOB_FOLDERS = {
   avatar: "avatar",
   skills: "skills",
   projects: "projects",
+  resume: "resume",
 } as const;
 
 export type BlobFolder = (typeof BLOB_FOLDERS)[keyof typeof BLOB_FOLDERS];
 
 const MAX_BYTES = 5 * 1024 * 1024; // 5MB raw upload cap
 const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/avif", "image/gif"];
-// SVG is allowed for icon-style uploads but stored raw (vectors don't go
+// SVG and PDF are allowed but stored raw (vectors/documents don't go
 // through the sharp raster pipeline). Kept separate so the resize helper
 // above stays raster-only.
 const SVG_TYPE = "image/svg+xml";
+const PDF_TYPE = "application/pdf";
 
 type ResizeOptions = {
   width: number;
@@ -67,11 +69,11 @@ export async function optimizeAndUploadImage(
   return blob.url;
 }
 
-async function putRawSvg(file: File, folder: BlobFolder): Promise<string> {
-  const key = `${folder}/${crypto.randomUUID()}.svg`;
+async function putRawFile(file: File, folder: BlobFolder, type: string, ext: string): Promise<string> {
+  const key = `${folder}/${crypto.randomUUID()}.${ext}`;
   const blob = await put(key, Buffer.from(await file.arrayBuffer()), {
     access: "public",
-    contentType: SVG_TYPE,
+    contentType: type,
     token: process.env.BLOB_READ_WRITE_TOKEN,
   });
   return blob.url;
@@ -86,7 +88,7 @@ export async function uploadIcon(file: File, folder: BlobFolder): Promise<string
   if (file.size > MAX_BYTES) {
     throw new Error("Image too large (max 5MB)");
   }
-  if (file.type === SVG_TYPE) return putRawSvg(file, folder);
+  if (file.type === SVG_TYPE) return putRawFile(file, folder, SVG_TYPE, "svg");
   // Raster icons: fit inside a 128px box (preserve aspect), WebP.
   return optimizeAndUploadImage(file, folder, { width: 128, height: 128, fit: "inside" });
 }
@@ -100,7 +102,7 @@ export async function uploadAvatar(file: File): Promise<string> {
   if (file.size > MAX_BYTES) {
     throw new Error("Image too large (max 5MB)");
   }
-  if (file.type === SVG_TYPE) return putRawSvg(file, BLOB_FOLDERS.avatar);
+  if (file.type === SVG_TYPE) return putRawFile(file, BLOB_FOLDERS.avatar, SVG_TYPE, "svg");
   return optimizeAndUploadImage(file, BLOB_FOLDERS.avatar, {
     width: 1024,
     height: 1024,
@@ -120,4 +122,17 @@ export async function uploadProjectMedia(file: File): Promise<string> {
     height: 1000,
     fit: "inside",
   });
+}
+
+/**
+ * Upload a resume (PDF).
+ */
+export async function uploadResume(file: File): Promise<string> {
+  if (file.size > MAX_BYTES) {
+    throw new Error("File too large (max 5MB)");
+  }
+  if (file.type !== PDF_TYPE) {
+    throw new Error("Only PDF files are supported for resumes");
+  }
+  return putRawFile(file, BLOB_FOLDERS.resume, PDF_TYPE, "pdf");
 }

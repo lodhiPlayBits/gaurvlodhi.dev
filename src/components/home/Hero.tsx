@@ -10,6 +10,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 export type HeroProfile = {
   name: string;
   roles: string[];
+  resumeUrl?: string;
 };
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -128,6 +129,19 @@ export function Hero({
               View work <ArrowRight className="size-4" aria-hidden />
             </Button>
           </Magnetic>
+          {profile.resumeUrl && (
+            <Magnetic>
+              <Button
+                variant="secondary"
+                size="lg"
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View resume
+              </Button>
+            </Magnetic>
+          )}
           {sponsorUrl && (
             <Magnetic>
               <Button

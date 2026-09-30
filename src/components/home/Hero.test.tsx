@@ -36,12 +36,15 @@ describe("Hero", () => {
     expect(marquee).toHaveTextContent("Full Stack Developer");
   });
 
-  it("renders View work always and Sponsor only with sponsorUrl", () => {
+  it("renders CTAs conditionally", () => {
     const { rerender } = render(<Hero profile={profile} />);
     expect(screen.getByRole("link", { name: /view work/i })).toHaveAttribute("href", "#projects");
     expect(screen.queryByRole("link", { name: /sponsor/i })).not.toBeInTheDocument();
-    rerender(<Hero profile={profile} sponsorUrl="https://github.com/sponsors/lodhiPlayBits" />);
+    expect(screen.queryByRole("link", { name: /view resume/i })).not.toBeInTheDocument();
+    
+    rerender(<Hero profile={{ ...profile, resumeUrl: "https://example.com/resume.pdf" }} sponsorUrl="https://github.com/sponsors/lodhiPlayBits" />);
     expect(screen.getByRole("link", { name: /sponsor/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /view resume/i })).toHaveAttribute("href", "https://example.com/resume.pdf");
   });
 
   it("renders no avatar image and no scroll chevron", () => {

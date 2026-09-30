@@ -5,6 +5,7 @@ import {
   uploadAvatar,
   uploadIcon,
   uploadProjectMedia,
+  uploadResume,
   type BlobFolder,
 } from "@/lib/blob";
 
@@ -15,6 +16,7 @@ const ALLOWED_FOLDERS = new Set<BlobFolder>([
   BLOB_FOLDERS.avatar,
   BLOB_FOLDERS.skills,
   BLOB_FOLDERS.projects,
+  BLOB_FOLDERS.resume,
 ]);
 
 /**
@@ -43,11 +45,13 @@ export async function POST(req: NextRequest) {
     // Each folder gets its own box: uploadIcon fits inside 128px, which is correct for a skill
     // icon and would reduce a screenshot to a thumbnail or a portrait to a blur.
     const url =
-      folder === BLOB_FOLDERS.projects
-        ? await uploadProjectMedia(file)
-        : folder === BLOB_FOLDERS.avatar
-          ? await uploadAvatar(file)
-          : await uploadIcon(file, folder);
+      folder === BLOB_FOLDERS.resume
+        ? await uploadResume(file)
+        : folder === BLOB_FOLDERS.projects
+          ? await uploadProjectMedia(file)
+          : folder === BLOB_FOLDERS.avatar
+            ? await uploadAvatar(file)
+            : await uploadIcon(file, folder);
     return NextResponse.json({ url }, { status: 201 });
   } catch (err) {
     // Surface the size/type validation message without leaking internals.
